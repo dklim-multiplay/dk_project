@@ -10,6 +10,7 @@
 // @downloadURL  https://github.com/dklim-multiplay/dk_project/blob/master/Zabbix.user.js
 // ==/UserScript==
 
+
 var textAreaDiv = document.createElement("TEXTAREA");
 textAreaDiv.setAttribute("style", "width:500px; height:200px; background-color: linear-gradient(to bottom, #fff, #e6e6e6); border-color: grey;");
 var textArea = document.getElementsByTagName("TEXTAREA")[0];
@@ -22,19 +23,22 @@ var machines=document.createElement("input");
 machines.type="button";
 machines.value="GF Machines";
 machines.onclick = gotogameforge_machines;
-textAreaDiv.parentNode.appendChild(machines);
-
+document.body.appendChild(machines);
 
 var procurement=document.createElement("input");
 procurement.type="button";
 procurement.value="GF Procurement";
 procurement.onclick = gotogameforge_procurement;
-machines.parentNode.appendChild(procurement);
+document.body.appendChild(procurement);
 
+var clear=document.createElement("input");
+clear.type="button";
+clear.value="Clear";
+clear.onclick = clear_button;
+document.body.appendChild(clear);
 
 function gotogameforge_machines()
 {
-
     var hostnames = document.getElementsByTagName("TEXTAREA")[0].value;
     hostnames = hostnames.replace(/\n/g,",");
     console.log(hostnames);
@@ -45,12 +49,10 @@ function gotogameforge_machines()
     else{
         alert("Type hostname");
     }
-
 }
 
 function gotogameforge_procurement()
 {
-
     var hostnames = document.getElementsByTagName("TEXTAREA")[0].value;
     hostnames = hostnames.replace(/\n/g,",");
     var gameforge = "https://gameforge.multiplay.co.uk/cgi-adm/machines.pl?opt=MachineProcurementReport;event=Online;MachineProcurementReport_filters=name%23%3A%23"+hostnames
@@ -60,4 +62,9 @@ function gotogameforge_procurement()
     else{
         alert("Type hostname");
     }
+}
+
+function clear_button()
+{
+    textAreaDiv.value='';
 }
