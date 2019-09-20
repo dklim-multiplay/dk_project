@@ -6,6 +6,8 @@
 // @author       dklim
 // @match        https://zabbix.multiplay.co.uk/zabbix.php?action=dashboard.view
 // @grant        none
+// @updateURL    https://github.com/dklim-multiplay/dk_project/blob/master/Zabbix.user.js
+// @downloadURL  https://github.com/dklim-multiplay/dk_project/blob/master/Zabbix.user.js
 // ==/UserScript==
 
 var textAreaDiv = document.createElement("TEXTAREA");
